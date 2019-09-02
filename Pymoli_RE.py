@@ -12,7 +12,7 @@ import pandas as pd
 
 file = "Resources/purchase_data.csv"
 pymoli_df = pd.read_csv(file)
-pymoli_df.head()
+display(pymoli_df.head())
 
 
 # In[3]:
@@ -22,7 +22,7 @@ pymoli_df.head()
 player_count = len(pymoli_df["SN"].value_counts())
 
 total_players = pd.DataFrame({"Total Players": [player_count]})
-total_players
+display(total_players)
 
 
 # In[4]:
@@ -48,7 +48,7 @@ total_revenue
 
 total_revenue['Average Price'] = total_revenue['Average Price'].map("${:.2f}".format)
 total_revenue['Total Revenue'] = total_revenue['Total Revenue'].map("${:,.2f}".format)
-total_revenue.head()
+display(total_revenue.head())
 
 
 # In[6]:
@@ -60,14 +60,14 @@ gender_demo = pymoli_df.groupby("Gender")
 gender_count = gender_demo.nunique()["SN"]
 gender_per = gender_count / player_count * 100
 
-gender_df = pd.DataFrame({"Total Count": gender_count,
+display(gender_df = pd.DataFrame({"Total Count": gender_count,
                           "Percentage of Players": gender_per})
 
 gender_df["Percentage of Players"] = gender_df["Percentage of Players"].map("{:.2f}".format)
-gender_df.sort_values(["Total Count"], ascending = False)
+gender_df.sort_values(["Total Count"], ascending = False))
 
 
-# In[7]:
+# In[ ]:
 
 
 #Purchasing Analysis (by gender)
@@ -84,10 +84,10 @@ gen_analysis = pd.DataFrame({"Purchase Count": pur_count,
 gen_analysis["Average Purchase Price"] = gen_analysis["Average Purchase Price"].map("${:,.2f}".format)
 gen_analysis["Total Purchase Value"] = gen_analysis["Total Purchase Value"].map("${:,.2f}".format)
 gen_analysis["Avg Purchase Total per Person"] = gen_analysis["Avg Purchase Total per Person"].map("${:,.2f}".format)
-gen_analysis.head()
+display(gen_analysis.head())
 
 
-# In[8]:
+# In[ ]:
 
 
 #Age Demographics
@@ -104,10 +104,10 @@ age_df = pd.DataFrame({"Total Count": age_total,
                       "Percentage of Players": age_per})
 
 age_df["Percentage of Players"] = age_df["Percentage of Players"].map("{:.2f}".format)
-age_df
+display(age_df)
 
 
-# In[9]:
+# In[ ]:
 
 
 #Purchasing Analysis (by age)
@@ -124,10 +124,10 @@ age_analysis = pd.DataFrame({"Purchase Count": age_count,
 age_analysis["Average Purchase Price"] = age_analysis["Average Purchase Price"].map("${:,.2f}".format)
 age_analysis["Total Purchase Value"] = age_analysis["Total Purchase Value"].map("${:,.2f}".format)
 age_analysis["Avg Purchase Total per Person"] = age_analysis["Avg Purchase Total per Person"].map("${:,.2f}".format)
-age_analysis
+display(age_analysis)
 
 
-# In[10]:
+# In[ ]:
 
 
 #Top Spenders
@@ -145,10 +145,10 @@ top_df["Total Purchase Value"] = top_df["Total Purchase Value"].map("${:,.2f}".f
 top_df
 
 spender_analysis = top_df.sort_values(by=["Purchase Count", "Average Purchase Price", "Total Purchase Value"], ascending=False)
-spender_analysis.head()
+display(spender_analysis.head())
 
 
-# In[11]:
+# In[ ]:
 
 
 #Most Popular Items
@@ -172,18 +172,18 @@ most_popular["Total Purchase Value"] = most_popular["Total Purchase Value"].map(
 most_popular
 
 item_analysis = most_popular.sort_values(by=["Purchase Count"], ascending=False)
-item_analysis.head()
+display(item_analysis.head())
 
 
-# In[12]:
+# In[ ]:
 
 
 #Most Profitable Items
 item_analysis = most_popular.sort_values(by=["Purchase Count", "Item Price", "Total Purchase Value"], ascending=False)
-item_analysis.head()
+display(item_analysis.head())
 
 
-# In[13]:
+# In[ ]:
 
 
 #Sources:
