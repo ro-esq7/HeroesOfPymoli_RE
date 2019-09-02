@@ -8,8 +8,10 @@ import pandas as pd
 ```python
 file = "Resources/purchase_data.csv"
 pymoli_df = pd.read_csv(file)
-display(pymoli_df.head())
+pymoli_df.head()
 ```
+
+
 
 
 <div>
@@ -96,13 +98,16 @@ display(pymoli_df.head())
 
 
 
+
 ```python
 #Player Count
 player_count = len(pymoli_df["SN"].value_counts())
 
 total_players = pd.DataFrame({"Total Players": [player_count]})
-display(total_players)
+total_players
 ```
+
+
 
 
 <div>
@@ -137,6 +142,7 @@ display(total_players)
 
 
 
+
 ```python
 pymoli_df.columns
 ```
@@ -164,8 +170,10 @@ total_revenue
 
 total_revenue['Average Price'] = total_revenue['Average Price'].map("${:.2f}".format)
 total_revenue['Total Revenue'] = total_revenue['Total Revenue'].map("${:,.2f}".format)
-display(total_revenue.head())
+total_revenue.head()
 ```
+
+
 
 
 <div>
@@ -206,6 +214,7 @@ display(total_revenue.head())
 
 
 
+
 ```python
 #Gender Demographics
 gender_demo = pymoli_df.groupby("Gender")
@@ -213,19 +222,63 @@ gender_demo = pymoli_df.groupby("Gender")
 gender_count = gender_demo.nunique()["SN"]
 gender_per = gender_count / player_count * 100
 
-display(gender_df = pd.DataFrame({"Total Count": gender_count,
+gender_df = pd.DataFrame({"Total Count": gender_count,
                           "Percentage of Players": gender_per})
 
 gender_df["Percentage of Players"] = gender_df["Percentage of Players"].map("{:.2f}".format)
-gender_df.sort_values(["Total Count"], ascending = False))
+gender_df.sort_values(["Total Count"], ascending = False)
 ```
 
 
-      File "<ipython-input-6-cfe5bda7ac11>", line 10
-        gender_df["Percentage of Players"] = gender_df["Percentage of Players"].map("{:.2f}".format)
-                ^
-    SyntaxError: invalid syntax
-    
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Total Count</th>
+      <th>Percentage of Players</th>
+    </tr>
+    <tr>
+      <th>Gender</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Male</th>
+      <td>484</td>
+      <td>84.03</td>
+    </tr>
+    <tr>
+      <th>Female</th>
+      <td>81</td>
+      <td>14.06</td>
+    </tr>
+    <tr>
+      <th>Other / Non-Disclosed</th>
+      <td>11</td>
+      <td>1.91</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
 
 
 
@@ -244,8 +297,70 @@ gen_analysis = pd.DataFrame({"Purchase Count": pur_count,
 gen_analysis["Average Purchase Price"] = gen_analysis["Average Purchase Price"].map("${:,.2f}".format)
 gen_analysis["Total Purchase Value"] = gen_analysis["Total Purchase Value"].map("${:,.2f}".format)
 gen_analysis["Avg Purchase Total per Person"] = gen_analysis["Avg Purchase Total per Person"].map("${:,.2f}".format)
-display(gen_analysis.head())
+gen_analysis.head()
 ```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Purchase Count</th>
+      <th>Average Purchase Price</th>
+      <th>Total Purchase Value</th>
+      <th>Avg Purchase Total per Person</th>
+    </tr>
+    <tr>
+      <th>Gender</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Female</th>
+      <td>113</td>
+      <td>$3.20</td>
+      <td>$361.94</td>
+      <td>$4.47</td>
+    </tr>
+    <tr>
+      <th>Male</th>
+      <td>652</td>
+      <td>$3.02</td>
+      <td>$1,967.64</td>
+      <td>$4.07</td>
+    </tr>
+    <tr>
+      <th>Other / Non-Disclosed</th>
+      <td>15</td>
+      <td>$3.35</td>
+      <td>$50.19</td>
+      <td>$4.56</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 ```python
@@ -263,8 +378,85 @@ age_df = pd.DataFrame({"Total Count": age_total,
                       "Percentage of Players": age_per})
 
 age_df["Percentage of Players"] = age_df["Percentage of Players"].map("{:.2f}".format)
-display(age_df)
+age_df
 ```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Total Count</th>
+      <th>Percentage of Players</th>
+    </tr>
+    <tr>
+      <th>Age</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>&lt;10</th>
+      <td>17</td>
+      <td>2.95</td>
+    </tr>
+    <tr>
+      <th>10-14</th>
+      <td>22</td>
+      <td>3.82</td>
+    </tr>
+    <tr>
+      <th>15-19</th>
+      <td>107</td>
+      <td>18.58</td>
+    </tr>
+    <tr>
+      <th>20-24</th>
+      <td>258</td>
+      <td>44.79</td>
+    </tr>
+    <tr>
+      <th>25-29</th>
+      <td>77</td>
+      <td>13.37</td>
+    </tr>
+    <tr>
+      <th>30-34</th>
+      <td>52</td>
+      <td>9.03</td>
+    </tr>
+    <tr>
+      <th>35-39</th>
+      <td>31</td>
+      <td>5.38</td>
+    </tr>
+    <tr>
+      <th>40+</th>
+      <td>12</td>
+      <td>2.08</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 ```python
@@ -282,8 +474,105 @@ age_analysis = pd.DataFrame({"Purchase Count": age_count,
 age_analysis["Average Purchase Price"] = age_analysis["Average Purchase Price"].map("${:,.2f}".format)
 age_analysis["Total Purchase Value"] = age_analysis["Total Purchase Value"].map("${:,.2f}".format)
 age_analysis["Avg Purchase Total per Person"] = age_analysis["Avg Purchase Total per Person"].map("${:,.2f}".format)
-display(age_analysis)
+age_analysis
 ```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Purchase Count</th>
+      <th>Average Purchase Price</th>
+      <th>Total Purchase Value</th>
+      <th>Avg Purchase Total per Person</th>
+    </tr>
+    <tr>
+      <th>Age</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>&lt;10</th>
+      <td>23</td>
+      <td>$3.35</td>
+      <td>$77.13</td>
+      <td>$4.54</td>
+    </tr>
+    <tr>
+      <th>10-14</th>
+      <td>28</td>
+      <td>$2.96</td>
+      <td>$82.78</td>
+      <td>$3.76</td>
+    </tr>
+    <tr>
+      <th>15-19</th>
+      <td>136</td>
+      <td>$3.04</td>
+      <td>$412.89</td>
+      <td>$3.86</td>
+    </tr>
+    <tr>
+      <th>20-24</th>
+      <td>365</td>
+      <td>$3.05</td>
+      <td>$1,114.06</td>
+      <td>$4.32</td>
+    </tr>
+    <tr>
+      <th>25-29</th>
+      <td>101</td>
+      <td>$2.90</td>
+      <td>$293.00</td>
+      <td>$3.81</td>
+    </tr>
+    <tr>
+      <th>30-34</th>
+      <td>73</td>
+      <td>$2.93</td>
+      <td>$214.00</td>
+      <td>$4.12</td>
+    </tr>
+    <tr>
+      <th>35-39</th>
+      <td>41</td>
+      <td>$3.60</td>
+      <td>$147.67</td>
+      <td>$4.76</td>
+    </tr>
+    <tr>
+      <th>40+</th>
+      <td>13</td>
+      <td>$2.94</td>
+      <td>$38.24</td>
+      <td>$3.19</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 ```python
@@ -302,8 +591,77 @@ top_df["Total Purchase Value"] = top_df["Total Purchase Value"].map("${:,.2f}".f
 top_df
 
 spender_analysis = top_df.sort_values(by=["Purchase Count", "Average Purchase Price", "Total Purchase Value"], ascending=False)
-display(spender_analysis.head())
+spender_analysis.head()
 ```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Purchase Count</th>
+      <th>Average Purchase Price</th>
+      <th>Total Purchase Value</th>
+    </tr>
+    <tr>
+      <th>SN</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Lisosia93</th>
+      <td>5</td>
+      <td>$3.79</td>
+      <td>$18.96</td>
+    </tr>
+    <tr>
+      <th>Idastidru52</th>
+      <td>4</td>
+      <td>$3.86</td>
+      <td>$15.45</td>
+    </tr>
+    <tr>
+      <th>Iral74</th>
+      <td>4</td>
+      <td>$3.40</td>
+      <td>$13.62</td>
+    </tr>
+    <tr>
+      <th>Chamjask73</th>
+      <td>3</td>
+      <td>$4.61</td>
+      <td>$13.83</td>
+    </tr>
+    <tr>
+      <th>Iskadarya95</th>
+      <td>3</td>
+      <td>$4.37</td>
+      <td>$13.10</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 ```python
@@ -328,15 +686,167 @@ most_popular["Total Purchase Value"] = most_popular["Total Purchase Value"].map(
 most_popular
 
 item_analysis = most_popular.sort_values(by=["Purchase Count"], ascending=False)
-display(item_analysis.head())
+item_analysis.head()
 ```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Purchase Count</th>
+      <th>Item Price</th>
+      <th>Total Purchase Value</th>
+    </tr>
+    <tr>
+      <th>Item ID</th>
+      <th>Item Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>178</th>
+      <th>Oathbreaker, Last Hope of the Breaking Storm</th>
+      <td>12</td>
+      <td>$4.23</td>
+      <td>$50.76</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <th>Fiery Glass Crusader</th>
+      <td>9</td>
+      <td>$4.58</td>
+      <td>$41.22</td>
+    </tr>
+    <tr>
+      <th>108</th>
+      <th>Extraction, Quickblade Of Trembling Hands</th>
+      <td>9</td>
+      <td>$3.53</td>
+      <td>$31.77</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <th>Nirvana</th>
+      <td>9</td>
+      <td>$4.90</td>
+      <td>$44.10</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <th>Pursuit, Cudgel of Necromancy</th>
+      <td>8</td>
+      <td>$1.02</td>
+      <td>$8.16</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 ```python
 #Most Profitable Items
 item_analysis = most_popular.sort_values(by=["Purchase Count", "Item Price", "Total Purchase Value"], ascending=False)
-display(item_analysis.head())
+item_analysis.head()
 ```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Purchase Count</th>
+      <th>Item Price</th>
+      <th>Total Purchase Value</th>
+    </tr>
+    <tr>
+      <th>Item ID</th>
+      <th>Item Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>178</th>
+      <th>Oathbreaker, Last Hope of the Breaking Storm</th>
+      <td>12</td>
+      <td>$4.23</td>
+      <td>$50.76</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <th>Nirvana</th>
+      <td>9</td>
+      <td>$4.90</td>
+      <td>$44.10</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <th>Fiery Glass Crusader</th>
+      <td>9</td>
+      <td>$4.58</td>
+      <td>$41.22</td>
+    </tr>
+    <tr>
+      <th>108</th>
+      <th>Extraction, Quickblade Of Trembling Hands</th>
+      <td>9</td>
+      <td>$3.53</td>
+      <td>$31.77</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <th>Final Critic</th>
+      <td>8</td>
+      <td>$4.88</td>
+      <td>$39.04</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 ```python
